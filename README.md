@@ -8,11 +8,11 @@ This project addresses the challenge of securely merging networks for a financia
 
 ## Key Deliverables
 
-- **Network Merger Plan** — Risk-based integration strategy for combining two distinct network architectures
-- **Vulnerability Assessment** — Identification and remediation of security gaps across both companies
-- **Secure Network Topology** — Redesigned architecture implementing zero-trust and defense-in-depth
-- **Cloud Migration Strategy** — Server migration to Microsoft Azure for scalability and redundancy
-- **Compliance Framework** — Regulatory alignment with PCI-DSS, HIPAA, and GLBA
+- **Network Merger Plan:** Risk-based integration strategy for combining two distinct network architectures
+- **Vulnerability Assessment:** Identification and remediation of security gaps across both companies
+- **Secure Network Topology:** Redesigned architecture implementing zero-trust and defense-in-depth
+- **Cloud Migration Strategy:** Server migration to Microsoft Azure for scalability and redundancy
+- **Compliance Framework:** Regulatory alignment with PCI-DSS, HIPAA, and GLBA
 
 ## Technical Highlights
 
@@ -23,11 +23,11 @@ This project addresses the challenge of securely merging networks for a financia
 - Replaced Cisco 3750X switches (end-of-life) with Catalyst 1000-24P-4X-L
 
 ### Security Architecture
-- **Zero-Trust Model** — No implicit trust; all access verified regardless of network location
-- **Defense-in-Depth** — Multiple layered security controls across all OSI layers
-- **Network Segmentation** — VLANs and firewall zones to isolate sensitive data
-- **MFA Enforcement** — Multi-factor authentication across all access points
-- **VPN (Cisco AnyConnect)** — Secure remote access for distributed workforce
+- **Zero-Trust Model:** No implicit trust; all access verified regardless of network location
+- **Defense-in-Depth:** Multiple layered security controls across all OSI layers
+- **Network Segmentation:** VLANs and firewall zones to isolate sensitive data
+- **MFA Enforcement:** Multi-factor authentication across all access points
+- **VPN (Cisco AnyConnect):** Secure remote access for distributed workforce
 
 ### Cloud Migration
 - All servers migrated to Microsoft Azure cloud services
