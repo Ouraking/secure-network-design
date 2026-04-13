@@ -72,10 +72,35 @@ The merged network topology features:
 - Segmented zones for Company A and Company B assets
 - MFA enforcement at all critical access points
 
+## Key Decision Rationale
+
+### Why Fortinet FortiGate over alternatives?
+The FortiGate FG 90G was selected over Palo Alto PA-440 and Cisco Firepower 1010 for three reasons: (1) **unified threat management** — FortiGate consolidates firewall, IPS, antivirus, and web filtering into a single appliance, reducing operational complexity during a high-risk merger transition; (2) **cost-to-performance ratio** — at $2,150, the FG 90G delivers enterprise-grade NGFW capabilities at roughly half the cost of comparable Palo Alto units; (3) **FortiGuard integration** — threat intelligence feeds update in real-time without requiring a separate subscription tier.
+
+### Why Azure over AWS for this use case?
+Azure was chosen because Company B (medical software provider) already operated Microsoft 365 for email and productivity. Azure Active Directory integration provided **single-pane-of-glass identity management** across on-premises and cloud resources — critical during a merger where two identity systems must be consolidated. AWS would have required additional identity federation tooling and licensing.
+
+### Why Zero Trust for a merger scenario?
+During a network merger, implicit trust boundaries are the highest-risk factor. Neither company's existing trust model can be assumed valid for the combined entity. Zero Trust eliminates this by requiring **explicit verification for every access request**, regardless of whether it originates from Company A or Company B's legacy network. This approach prevented the need to audit and reconcile two separate trust models.
+
+### Why dual-firewall layering (Fortinet + Sophos)?
+Defense-in-depth mandates that no single vendor's vulnerability can compromise the entire perimeter. By layering Fortinet (perimeter) with Sophos XG (internal segmentation), an exploit targeting one vendor's firmware or signature engine cannot bypass the second layer. This is a deliberate architectural choice aligned with NIST SP 800-53 SC-7 (Boundary Protection).
+
+## Lessons Learned
+
+- **Inventory before architecture:** The vulnerability assessment revealed end-of-life equipment (Cisco 7600, Windows Server 2012) that would have silently undermined the new security controls. A full asset inventory must precede any design work.
+- **Compliance drives budget conversations:** Framing the $50K budget around PCI-DSS, HIPAA, and GLBA non-compliance penalties made executive approval straightforward. Security spending is easier to justify when tied to regulatory risk.
+- **VPN is not optional in mergers:** Distributed workforces from both companies needed secure access from day one. Deploying Cisco AnyConnect early in the timeline prevented shadow IT workarounds that would have created unmonitored access paths.
+- **Cloud migration simplifies EOL remediation:** Rather than replacing Windows Server 2012 with new on-premises hardware, migrating to Azure eliminated the OS patching burden entirely and shifted responsibility to Microsoft's shared responsibility model.
+
+## Skills Demonstrated
+
+`Zero Trust Architecture` `Defense-in-Depth` `Network Segmentation` `Vulnerability Assessment` `Cloud Migration (Azure)` `Firewall Configuration (Fortinet/Sophos)` `Regulatory Compliance (PCI-DSS, HIPAA, GLBA)` `Risk-Based Budgeting` `Infrastructure Lifecycle Management` `VPN Deployment`
+
 ## Author
 
 **Koffi Jean-Marie Amedjonekou**
-Security Researcher
+Cybersecurity Engineer
 
 ## License
 
