@@ -67,6 +67,50 @@ Total first-year budget: **$50,000**
 
 ## Network Diagram
 
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#101A33','primaryTextColor':'#F2F6FF','primaryBorderColor':'#2DD4BF','lineColor':'#8B97B8','secondaryColor':'#0D1428','tertiaryColor':'#0A0F1E','clusterBkg':'#0A0F1E','clusterBorder':'#24335C','edgeLabelBackground':'#0D1428','fontSize':'14px'}}}%%
+flowchart TB
+    ISP1["ISP 1"] --> EDGE
+    ISP2["ISP 2<br/>redundant path"] --> EDGE
+
+    subgraph EDGE["Perimeter"]
+        direction TB
+        R["Cisco ASR 900<br/>border routers"] --> FG["Fortinet FortiGate FG 90G<br/>next-generation firewall"]
+    end
+
+    EDGE --> SOPHOS["Sophos XG<br/>internal segmentation"]
+
+    SOPHOS --> MFA{"MFA enforced<br/>at every access point"}
+
+    MFA --> ZA
+    MFA --> ZB
+    MFA --> VPN["Cisco AnyConnect VPN<br/>remote workforce"]
+
+    subgraph ZA["Company A zone, financial"]
+        A1["Catalyst 1000 switching"]
+        A2["GLBA scoped assets"]
+    end
+
+    subgraph ZB["Company B zone, medical software"]
+        B1["Meraki MR 42 access points"]
+        B2["HIPAA and PCI-DSS scoped assets"]
+    end
+
+    ZA --> AZ
+    ZB --> AZ
+    VPN --> AZ
+
+    subgraph AZ["Microsoft Azure"]
+        S1["All server workloads"]
+        S2["Disaster recovery<br/>and elasticity"]
+    end
+
+    classDef fw fill:#0D1428,stroke:#F5B942,stroke-width:2px,color:#F5B942
+    classDef core fill:#101A33,stroke:#2DD4BF,stroke-width:2px,color:#F2F6FF
+    class FG,SOPHOS,MFA fw
+    class R,VPN core
+```
+
 The merged network topology features:
 - Dual ISP connections for redundancy
 - Fortinet and Sophos firewalls in layered configuration
