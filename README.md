@@ -1,3 +1,5 @@
+<img src="./repo-banner.svg" alt="Secure Network Design: network merger with zero trust and defense in depth" width="100%"/>
+
 # Secure Network Design
 
 A comprehensive secure network merger and implementation plan for integrating two companies with distinct regulatory requirements.
